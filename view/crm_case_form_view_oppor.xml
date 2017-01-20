@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="br_ext_inherits_business_requirement_deliverable_crm__crm_case_form_view_oppor">
+            <field name="name">br_ext_inherits_business_requirement_deliverable_crm__crm_case_form_view_oppor</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="business_requirement_deliverable_crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='resource_cost_total']" position="replace"/>
+                <xpath expr="//button[@icon='fa-tasks']" position="attributes">
+			<attribute name="string">BusinessReqs</attribute>
+		</xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="br_ext_inherits_crm__crm_case_form_view_oppor">
+            <field name="name">br_ext_inherits_crm__crm_case_form_view_oppor</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+
+		<xpath expr="//label[@for='planned_revenue']" position="attributes">
+    			<attribute name="class">""</attribute>
+		</xpath>
+
+              	<xpath expr="//label[@for='planned_revenue']" position="before">
+			<label for="resource_cost_total"/>
+	             	<h2>
+               			<field string="Business Req." name="resource_cost_total" class="oe_inline" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+       		      	</h2>
+        	</xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>
